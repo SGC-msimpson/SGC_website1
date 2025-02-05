@@ -1,3 +1,4 @@
+/* Basic Reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -10,8 +11,8 @@ body {
   line-height: 1.6;
   background-color: #fafafa;
   color: #333;
-  /* Adjust padding-top so content isn't hidden by the fixed header */
-  padding-top: 150px; /* Increase/decrease based on header height */
+  /* Adjust padding-top so content isn’t hidden behind the fixed header */
+  padding-top: 150px;  /* Increase/decrease as needed based on header height */
 }
 
 /* Fixed Header */
@@ -32,20 +33,23 @@ header {
   margin: 0 auto;
 }
 
-/* Header Top: Logo and Main Title */
+/* Header Top: Logo and Main Title on the Same Row */
 .header-top {
   display: flex;
-  align-items: center;
+  flex-direction: row;  /* Ensure a horizontal layout */
+  align-items: center;  /* Vertically center the items */
 }
 
 .logo {
-  width: 60px; /* Adjust as needed */
+  display: inline-block;
+  width: 60px; /* Adjust the size as needed */
   height: auto;
   margin-right: 15px; /* Space between logo and title */
 }
 
 .header-top h1 {
-  font-size: 2.5rem; /* Main title size */
+  display: inline-block;
+  font-size: 2.5rem;  /* Main title size */
   margin: 0;
 }
 
