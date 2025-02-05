@@ -10,15 +10,15 @@ body {
   line-height: 1.6;
   background-color: #fafafa;
   color: #333;
-  /* Increase top padding to ensure the header doesn't cover page content */
-  padding-top: 150px;  /* Adjust this value based on your header height */
+  /* Adjust padding-top so content isn't hidden by the fixed header */
+  padding-top: 150px; /* Increase/decrease based on header height */
 }
 
 /* Fixed Header */
 header {
   background-color: #003366; /* Dark blue */
   color: #fff;
-  padding: 30px 20px;  /* Increased padding makes the header larger */
+  padding: 30px 20px;
   position: fixed;
   top: 0;
   width: 100%;
@@ -26,41 +26,40 @@ header {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Header Content */
+/* Header Content Container */
 .header-content {
   max-width: 1000px;
   margin: 0 auto;
 }
 
-/* Header Text & Logo */
-.header-text {
+/* Header Top: Logo and Main Title */
+.header-top {
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  align-items: flex-start;
+  align-items: center;
 }
 
 .logo {
   width: 60px; /* Adjust as needed */
   height: auto;
-  margin-bottom: 10px; /* Space between logo and title */
+  margin-right: 15px; /* Space between logo and title */
 }
 
-.header-text h1 {
-  font-size: 2.5rem; /* Bigger main title */
+.header-top h1 {
+  font-size: 2.5rem; /* Main title size */
   margin: 0;
 }
 
-/* Sub-Pages (Navigation) - Displayed below the main title */
+/* Sub-Pages (Navigation) on the Second Row */
 .sub-pages {
   font-size: 0.9rem; /* Smaller font */
-  color: #cce0ff;   /* A lighter shade for contrast */
+  color: #cce0ff;   /* Lighter shade for contrast */
   margin-top: 5px;
 }
 
 .sub-pages a {
   text-decoration: none;
   color: inherit;
-  margin-right: 10px; /* Adjust spacing between links if desired */
+  margin-right: 10px; /* Spacing between links */
 }
 
 .sub-pages a:hover {
@@ -78,9 +77,9 @@ header {
 
 /* Responsive Adjustments */
 @media screen and (max-width: 600px) {
-  .header-content {
-    flex-direction: column;
-    align-items: flex-start;
+  .header-top {
+    flex-direction: row;
+    align-items: center;
   }
   .sub-pages {
     margin-top: 10px;
