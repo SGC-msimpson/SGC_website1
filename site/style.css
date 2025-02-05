@@ -11,20 +11,21 @@ body {
   line-height: 1.6;
   background-color: #fafafa;
   color: #333;
-  /* Adjust padding-top so content isn’t hidden behind the fixed header */
+  /* Adjust top padding so that the fixed header does not cover page content */
   padding-top: 150px;  /* Increase/decrease as needed based on header height */
 }
 
 /* Fixed Header */
 header {
-  background-color: #003366; /* Dark blue */
-  color: #fff;
+  background-color: #fff; /* White background */
+  color: #333; /* Dark text for contrast */
   padding: 30px 20px;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Grey line at the bottom of the header */
+  border-bottom: 1px solid #ccc;
 }
 
 /* Header Content Container */
@@ -36,33 +37,34 @@ header {
 /* Header Top: Logo and Main Title on the Same Row */
 .header-top {
   display: flex;
-  flex-direction: row;  /* Ensure a horizontal layout */
-  align-items: center;  /* Vertically center the items */
+  flex-direction: row;
+  align-items: center;
 }
 
 .logo {
   display: inline-block;
-  width: 60px; /* Adjust the size as needed */
+  width: 60px; /* Adjust as needed */
   height: auto;
   margin-right: 15px; /* Space between logo and title */
 }
 
 .header-top h1 {
   display: inline-block;
-  font-size: 2.5rem;  /* Main title size */
+  font-size: 2.5rem; /* Main title size */
   margin: 0;
+  color: #333;
 }
 
 /* Sub-Pages (Navigation) on the Second Row */
 .sub-pages {
-  font-size: 0.9rem; /* Smaller font */
-  color: #cce0ff;   /* Lighter shade for contrast */
+  font-size: 0.9rem; /* Smaller font for navigation */
+  color: #777;     /* Medium grey text */
   margin-top: 5px;
 }
 
 .sub-pages a {
   text-decoration: none;
-  color: inherit;
+  color: #777;
   margin-right: 10px; /* Spacing between links */
 }
 
