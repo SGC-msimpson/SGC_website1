@@ -10,16 +10,15 @@ body {
   line-height: 1.6;
   background-color: #fafafa;
   color: #333;
-  /* Increase top padding to account for the larger header */
-  padding-top: 120px;
+  /* Increase top padding to ensure the header doesn't cover page content */
+  padding-top: 150px;  /* Adjust this value based on your header height */
 }
 
 /* Fixed Header */
 header {
   background-color: #003366; /* Dark blue */
   color: #fff;
-  /* Increase padding to make the header larger */
-  padding: 30px 20px;
+  padding: 30px 20px;  /* Increased padding makes the header larger */
   position: fixed;
   top: 0;
   width: 100%;
@@ -61,7 +60,7 @@ header {
 .sub-pages a {
   text-decoration: none;
   color: inherit;
-  margin-right: 10px;
+  margin-right: 10px; /* Adjust spacing between links if desired */
 }
 
 .sub-pages a:hover {
