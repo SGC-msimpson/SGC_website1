@@ -1,4 +1,3 @@
-/* Basic Reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -11,14 +10,16 @@ body {
   line-height: 1.6;
   background-color: #fafafa;
   color: #333;
-  padding-top: 100px; /* Space for the fixed header */
+  /* Increase top padding to account for the larger header */
+  padding-top: 120px;
 }
 
 /* Fixed Header */
 header {
   background-color: #003366; /* Dark blue */
   color: #fff;
-  padding: 20px;
+  /* Increase padding to make the header larger */
+  padding: 30px 20px;
   position: fixed;
   top: 0;
   width: 100%;
@@ -28,45 +29,42 @@ header {
 
 /* Header Content */
 .header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   max-width: 1000px;
   margin: 0 auto;
 }
 
-/* Header Text and Logo */
+/* Header Text & Logo */
 .header-text {
   display: flex;
-  align-items: center;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: flex-start;
 }
 
 .logo {
   width: 60px; /* Adjust as needed */
   height: auto;
-  margin-right: 15px;
+  margin-bottom: 10px; /* Space between logo and title */
 }
 
-/* Navigation */
-nav ul {
-  list-style: none;
-  display: flex;
+.header-text h1 {
+  font-size: 2.5rem; /* Bigger main title */
   margin: 0;
-  padding: 0;
 }
 
-nav ul li {
-  margin: 0 10px;
+/* Sub-Pages (Navigation) - Displayed below the main title */
+.sub-pages {
+  font-size: 0.9rem; /* Smaller font */
+  color: #cce0ff;   /* A lighter shade for contrast */
+  margin-top: 5px;
 }
 
-nav ul li a {
-  color: #fff;
+.sub-pages a {
   text-decoration: none;
-  padding: 10px;
-  font-weight: bold;
+  color: inherit;
+  margin-right: 10px;
 }
 
-nav ul li a:hover {
+.sub-pages a:hover {
   text-decoration: underline;
 }
 
@@ -83,14 +81,9 @@ nav ul li a:hover {
 @media screen and (max-width: 600px) {
   .header-content {
     flex-direction: column;
+    align-items: flex-start;
   }
-  
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  nav ul li {
-    margin: 5px 0;
+  .sub-pages {
+    margin-top: 10px;
   }
 }
