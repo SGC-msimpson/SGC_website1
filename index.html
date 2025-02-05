@@ -94,13 +94,38 @@
         width: 100%;
       }
     }
+
+    .header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Adjust if you want to change alignment */
+}
+
+.logo {
+  width: 60px;  /* Adjust the size as needed */
+  height: auto;
+  margin-right: 15px; /* Space between the logo and the text */
+}
+
+/* Optional: Adjust header text styling if necessary */
+.header-text h1,
+.header-text p {
+  margin: 0;
+}
+    
   </style>
 </head>
 <body>
   <header>
-    <h1>Skin Genetics Consortium</h1>
-    <p>Advancing the understanding of skin genetics for better health</p>
+  <div class="header-content">
+    <img src="images/logo.png" alt="Skin Genetics Logo" class="logo">
+    <div class="header-text">
+      <h1>Skin Genetics Consortium</h1>
+      <p>Advancing the understanding of skin genetics for better health</p>
+    </div>
+  </div>
   </header>
+
 
   <nav>
     <a href="#home">Home</a>
