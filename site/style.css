@@ -93,25 +93,21 @@ header {
   }
 }
 
-/* Remove bullet points and add spacing for lists within the container */
-.container ul {
+
+ul {
   list-style: none;    /* Removes the bullet points */
   padding-left: 0;     /* Removes default left padding */
   margin-bottom: 20px; /* Adds extra space after the list */
 }
 
 /* Add extra whitespace above and below section headings */
-.container h3 {
+h3 {
   margin-top: 30px;    /* Space above the section heading */
   margin-bottom: 10px; /* Space below the section heading */
 }
 
 /* Optional: Adjust paragraph spacing if needed */
-.container p {
+p {
   margin-bottom: 2.5em; /* Adjust as desired */
 }
 
-
-p {
-  margin-bottom: 2.5em; /* 1.5 times the font size of the paragraph */
-}
