@@ -93,21 +93,25 @@ header {
   }
 }
 
-
+/* Remove bullet points for all ul elements */
 ul {
-  list-style: none;    /* Removes the bullet points */
-  padding-left: 0;     /* Removes default left padding */
-  margin-bottom: 20px; /* Adds extra space after the list */
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 20px;
 }
 
-/* Add extra whitespace above and below section headings */
-h3 {
-  margin-top: 30px;    /* Space above the section heading */
-  margin-bottom: 10px; /* Space below the section heading */
+/* Increase spacing for the Co-ordinating Team list */
+.team-list {
+  margin-bottom: 40px;  /* Adjust this value to increase space */
 }
 
-/* Optional: Adjust paragraph spacing if needed */
+/* Increase spacing for the Consortium Members heading */
+.members-heading {
+  margin-top: 50px;  /* Adjust this value to increase space above the heading */
+}
+
+/* Paragraph spacing */
 p {
-  margin-bottom: 2.5em; /* Adjust as desired */
+  margin-bottom: 2.5em;  /* Adjust as desired */
 }
 
