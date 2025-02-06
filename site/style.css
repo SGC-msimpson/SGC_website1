@@ -93,3 +93,6 @@ header {
   }
 }
 
+p {
+  margin-bottom: 2.5em; /* 1.5 times the font size of the paragraph */
+}
