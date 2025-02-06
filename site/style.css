@@ -95,3 +95,21 @@ header {
     margin-top: 10px;
   }
 }
+
+/* Sidebar for Logos on the Right */
+.side-logos {
+  position: fixed;     /* Fixed positioning keeps it visible on scroll */
+  top: 150px;          /* Adjust so it starts below the header */
+  right: 20px;         /* Distance from the right edge */
+  width: 120px;        /* Adjust width as needed */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;           /* Space between each logo */
+}
+
+.side-logos img {
+  max-width: 100%;
+  height: auto;
+  display: block;      /* Removes any extra inline spacing */
+}
+
