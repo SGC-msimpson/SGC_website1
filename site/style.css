@@ -5,126 +5,91 @@
   padding: 0;
 }
 
-/* Body and Typography */
+/* Body and Global Typography */
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
   background-color: #fafafa;
   color: #333;
-  /* Adjust top padding so that the fixed header does not cover page content */
-  padding-top: 150px;  /* Increase/decrease as needed based on header height */
+  padding-top: 150px; /* Ensures content isn't hidden behind the fixed header */
 }
 
-/* Remove bullet points and add spacing for lists within the container */
-.container ul {
-  list-style: none;    /* Removes the bullet points */
-  padding-left: 0;     /* Removes default left padding */
-  margin-bottom: 20px; /* Adds extra space after the list */
-}
-
-/* Add extra whitespace above and below section headings */
-.container h3 {
-  margin-top: 30px;    /* Space above the section heading */
-  margin-bottom: 10px; /* Space below the section heading */
-}
-
-/* Optional: Adjust paragraph spacing if needed */
-.container p {
-  margin-bottom: 2.5em; /* Adjust as desired */
-}
-
-
-/* Fixed Header */
+/* Fixed Header (unchanged from earlier) */
 header {
-  background-color: #fff; /* White background */
-  color: #333; /* Dark text for contrast */
+  background-color: #fff;
+  color: #333;
   padding: 30px 20px;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
-  /* Grey line at the bottom of the header */
   border-bottom: 1px solid #ccc;
 }
-
-/* Header Content Container */
 .header-content {
   max-width: 1000px;
   margin: 0 auto;
 }
-
-/* Header Top: Logo and Main Title on the Same Row */
 .header-top {
   display: flex;
-  flex-direction: row;
   align-items: center;
 }
-
 .logo {
-  display: inline-block;
-  width: 60px; /* Adjust as needed */
+  width: 60px;
   height: auto;
-  margin-right: 15px; /* Space between logo and title */
+  margin-right: 15px;
 }
-
 .header-top h1 {
-  display: inline-block;
-  font-size: 2.5rem; /* Main title size */
+  font-size: 2.5rem;
   margin: 0;
-  color: #333;
 }
-
-/* Sub-Pages (Navigation) on the Second Row */
 .sub-pages {
-  font-size: 0.9rem; /* Smaller font for navigation */
-  color: #777;     /* Medium grey text */
+  font-size: 0.9rem;
+  color: #777;
   margin-top: 5px;
 }
-
 .sub-pages a {
   text-decoration: none;
   color: #777;
-  margin-right: 10px; /* Spacing between links */
+  margin-right: 10px;
 }
-
 .sub-pages a:hover {
   text-decoration: underline;
 }
 
-/* Main Content Container */
-.container {
+/* Global Two-Column Layout for All Pages */
+.page-layout {
+  display: flex;
+  gap: 20px;  /* Space between the content and sidebar */
   max-width: 1000px;
   margin: 20px auto;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive Adjustments */
-@media screen and (max-width: 600px) {
-  .header-top {
-    flex-direction: row;
-    align-items: center;
-  }
-  .sub-pages {
-    margin-top: 10px;
-  }
+/* Left Column: Content takes 2/3 of the width */
+.content {
+  flex: 2;
 }
 
-/* Sidebar for Logos on the Right */
-.side-logos {
-  position: fixed;     /* Fixed positioning keeps it visible on scroll */
-  top: 150px;          /* Adjust so it starts below the header */
-  right: 20px;         /* Distance from the right edge */
-  width: 120px;        /* Adjust width as needed */
+/* Right Column: Sidebar (Logo) takes 1/3 of the width */
+.sidebar {
+  flex: 1;
   display: flex;
-  flex-direction: column;
-  gap: 20px;           /* Space between each logo */
+  justify-content: center;
+  align-items: center;
 }
 
-.side-logos img {
+/* Ensure the large logo scales responsively */
+.sidebar img {
   max-width: 100%;
   height: auto;
-  display: block;      /* Removes any extra inline spacing */
+}
+
+/* Responsive adjustments: Stack columns on smaller screens */
+@media screen and (max-width: 768px) {
+  .page-layout {
+    flex-direction: column;
+  }
+  .sidebar {
+    margin-top: 20px;
+  }
 }
 
