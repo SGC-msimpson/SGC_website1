@@ -1,1 +1,1 @@
-Website for the Skin Genetics COnsortium
+Website for the Skin Genetics Consortium
