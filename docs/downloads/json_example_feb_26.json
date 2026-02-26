@@ -1,0 +1,16 @@
+{
+  "GWAS_data": {
+    "cohort": "UK_Biobank",
+    "dataSetName": "UKBiobank_PSOR_EUR_male",
+    "phenotype": "PSOR",
+    "codesUsed": ["L40", "L40.0", "L40.1", "L40.2", "L40.3", "L40.4", "L40.7", "L40.8", "L40.9", "696", "696.1", "696.8"],
+    "sex": "Male",
+    "ancestry": "Combined",
+    "cases": 5000,
+    "controls": 100000,
+    "maleProportionCases": 0.40,
+    "maleProportionControls": 0.47,
+    "assocTestSoftwareAndVersion": "regenie v4.1"
+
+  }
+}
