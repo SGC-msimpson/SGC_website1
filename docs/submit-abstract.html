@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Submit an Abstract – ESDR 2026 Satellite Event</title>
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:       #1e1b4b;
+      --ink-light: #4338ca;
+      --ink-faint: #818cf8;
+      --bg:        #f5f5ff;
+      --surface:   #ffffff;
+      --teal:      #4f46e5;
+      --teal-dark: #3730a3;
+      --teal-pale: #eef2ff;
+      --gold:      #6ee7e7;
+      --border:    #dde1f5;
+      --red:       #c0392b;
+      --green:     #1a7a58;
+      --green-pale:#e8f7f2;
+      --radius:    12px;
+      --shadow:    0 2px 16px rgba(79,70,229,0.08);
+      --shadow-lg: 0 8px 40px rgba(79,70,229,0.13);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* ── Nav ─────────────────────────────── */
+    nav {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: #3730a3;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--ink-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-cta {
+      background: var(--teal) !important;
+      color: #fff !important;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--teal-dark) !important; }
+
+    /* burger */
+    .burger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .burger svg { display: block; }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      padding: 12px 24px 16px;
+      border-top: 1px solid var(--border);
+    }
+    .mobile-menu a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--ink-light);
+      text-decoration: none;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu .nav-cta {
+      background: var(--teal);
+      color: #fff;
+      border-radius: 8px;
+      padding: 10px 16px;
+      border: none;
+      text-align: center;
+      margin-top: 4px;
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .burger { display: block; }
+      .mobile-menu.open { display: flex; }
+    }
+
+    /* ── Hero ────────────────────────────── */
+    .hero {
+      background: #4c1d95;
+      background-image:
+        linear-gradient(135deg, #4c1d95 0%, #3730a3 50%, #0f766e 100%);
+      color: #fff;
+      padding: 80px 24px 72px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E");
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 1000px; margin: 0 auto; position: relative; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 1.0rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 24px;
+    }
+    .hero-badge::before { display: none; }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+    .hero-sub {
+      font-size: 1.3rem;
+      color: rgba(255, 255, 255, 0.905);
+      font-weight: 300;
+      max-width: 850px;
+      margin: 0 auto 36px;
+    }
+    .hero-highlight {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* Award cards */
+    .award-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      max-width: 800px;
+      margin: 0 auto 24px;
+    }
+    @media (max-width: 500px) { .award-cards { grid-template-columns: 1fr; } }
+    .award-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: left;
+    }
+    .award-card-label {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6ee7e7;
+      margin-bottom: 6px;
+    }
+    .award-card-text {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.865);
+      line-height: 1.5;
+    }
+    .hero-note {
+      font-size: 1.1rem;
+      color: rgba(245, 245, 245, 0.83);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+      max-width: 780px;
+      margin: 24px auto 0;
+      font-style: italic;
+    }
+
+    /* LEO Foundation banner */
+    .leo-banner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      max-width: 780px;
+      margin: 24px auto 0;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 18px 24px;
+      text-align: center;
+    }
+    .leo-banner-text {
+      font-size: 0.95rem;
+      font-style: normal;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.01em;
+    }
+    .leo-banner img {
+      height: 52px;
+      filter: brightness(1.5);
+    }
+
+    /* ── Main ────────────────────────────── */
+    main {
+      max-width: 750px;
+      margin: 0 auto;
+      padding: 52px 24px 80px;
+    }
+
+    /* Guidelines */
+    .guidelines {
+      background: var(--teal-pale);
+      border: 1px solid rgba(79,70,229,0.2);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-bottom: 40px;
+    }
+    .guidelines h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: #121213;
+      margin-bottom: 16px;
+    }
+    .guidelines ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .guidelines li {
+      display: flex;
+      gap: 10px;
+      font-size: 1.0rem;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    .guidelines li::before {
+      content: '→';
+      color: var(--teal);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .guidelines strong { color: var(--ink); }
+
+    /* Form card */
+    .form-card {
+      background: var(--surface);
+      border-radius: 16px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .form-header {
+      padding: 36px 40px 28px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(135deg, #f5f5ff 0%, #eef2ff 100%);
+    }
+    .form-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .form-header p { font-size: 0.875rem; color: var(--ink-faint); }
+    .form-body { padding: 36px 40px 40px; }
+    @media (max-width: 600px) {
+      .form-header { padding: 28px 24px 20px; }
+      .form-body { padding: 28px 24px 32px; }
+    }
+
+    /* Section dividers */
+    .form-section {
+      margin-bottom: 36px;
+    }
+    .form-section:last-of-type { margin-bottom: 0; }
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* Fields */
+    .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
+    .field:last-child { margin-bottom: 0; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 500px) { .field-row { grid-template-columns: 1fr; } }
+
+    label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+    }
+    .label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .char-count {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--ink-faint);
+      transition: color 0.2s;
+    }
+    .char-count.over { color: var(--red); }
+    .word-count {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--ink-faint);
+      transition: color 0.2s;
+    }
+    .word-count.over { color: var(--red); }
+
+    input, select, textarea {
+      width: 100%;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      color: var(--ink);
+      background: #fafafa;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+      appearance: none;
+    }
+    input::placeholder, textarea::placeholder { color: #c0c4d6; }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--teal);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(79,70,229,0.1);
+    }
+    input.invalid, select.invalid, textarea.invalid {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(192,57,43,0.08);
+    }
+    textarea { resize: vertical; line-height: 1.6; }
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='%238888a8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+    .hint {
+      font-size: 0.78rem;
+      color: var(--ink-faint);
+      margin-top: 2px;
+      transition: color 0.2s;
+    }
+    .hint.error { color: var(--red); }
+    .field-error {
+      font-size: 0.78rem;
+      color: var(--red);
+      display: none;
+    }
+    .field-error.show { display: block; }
+
+    /* Submit */
+    .submit-btn {
+      width: 100%;
+      margin-top: 32px;
+      padding: 15px 24px;
+      background: var(--teal);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      letter-spacing: 0.01em;
+    }
+    .submit-btn:hover { background: var(--teal-dark); box-shadow: 0 4px 20px rgba(79,70,229,0.3); }
+    .submit-btn:active { transform: translateY(1px); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    /* Spinner */
+    .spinner {
+      width: 18px; height: 18px;
+      border: 2.5px solid rgba(255,255,255,0.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+    .spinner.show { display: block; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Success */
+    .success-panel {
+      display: none;
+      text-align: center;
+      padding: 60px 40px;
+    }
+    .success-panel.show { display: block; }
+    .success-icon {
+      width: 64px; height: 64px;
+      background: var(--green-pale);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 1.8rem;
+    }
+    .success-panel h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+    .success-panel p { font-size: 0.9rem; color: var(--ink-light); max-width: 360px; margin: 0 auto; }
+
+    /* Footer */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 40px 24px;
+      font-size: 0.82rem;
+    }
+    footer p { margin-bottom: 4px; }
+    footer img { height: 70px; margin-top: 20px; opacity: 0.85; filter: brightness(1.4); }
+  </style>
+</head>
+
+<body>
+
+<!-- ── Nav ──────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="ESDR2026.html" class="nav-logo">G2CM ESDR Satellite Event</a>
+
+    <button class="burger" id="burgerBtn" aria-label="Toggle menu" aria-expanded="false">
+      <svg id="burgerIcon" width="22" height="22" fill="none" stroke="#4a4a6a" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+      <svg id="closeIcon" width="22" height="22" fill="none" stroke="#4a4a6a" viewBox="0 0 24 24" style="display:none">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+
+    <div class="nav-links">
+      <a href="ESDR2026.html">Home</a>
+      <a href="submit-abstract.html" class="nav-cta">Apply for a travel award</a>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="ESDR2026.html">Home</a>
+    <a href="submit-abstract.html" class="nav-cta">Apply for a travel award</a>
+  </div>
+</nav>
+
+<!-- ── Hero ─────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">ESDR 2026 Satellite Event</div>
+    <h1>Submit an abstract to apply for a travel award</h1>
+    <p class="hero-sub">
+ We are offering slots to pre-doctoral and post-doctoral researchers to give a 5 minute lightning talk at the symposium.
+ Selected speakers will be offered a travel award for attendance at the meeting.
+    </p>
+
+    <div class="award-cards">
+      <div class="award-card">
+        <div class="award-card-label">Europe</div>
+        <div class="award-card-text">Free ESDR registration + €1000 for hotel &amp; travel</div>
+      </div>
+      <div class="award-card">
+        <div class="award-card-label">Outside Europe</div>
+        <div class="award-card-text">Free ESDR registration + €2000 for hotel &amp; travel</div>
+      </div>
+    </div>
+
+    <!-- LEO Foundation + ESDR logos -->
+    <div class="leo-banner">
+      <span class="leo-banner-text">Travel awards are funded by the LEO Foundation and ESDR</span>
+      <div style="display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;">
+        <img src="logos/LEO_LOGO.png" alt="LEO Foundation Logo" />
+        <img src="logos/ESDR.png" alt="ESDR Logo" style="height:65px;" />
+      </div>
+    </div>
+
+    <p class="hero-note">
+      Deadline: <strong style="color:rgba(255, 255, 255, 0.7)">30/04/26</strong> <br>
+       To apply for an award please fill in the form before the deadline.
+        We will inform successful travel awardees by end of June, prior to ESDR early registration closure. <br> <br>
+        (NB - this is separate from the ESDR main programme abstract submission and you are welcome to submit to both) 
+    </p>
+
+  </div>
+</section>
+
+<!-- ── Main ─────────────────────────────────── -->
+<main>
+
+  <!-- Guidelines -->
+  <div class="guidelines">
+    <h2>Submission Guidelines</h2>
+    <ul>
+      <li>This is the abstract submission form for the Large-Scale Genetics to Cellular Mechanisms of Skin Disease (G2CM) ESDR satellite event.</li>
+      <li>Presenting author must be a pre-doctoral or post-doctoral researcher.</li>
+      <li>Abstracts must be submitted in English.</li>
+      <li>Abstract: maximum 2,300 characters including spaces.</li>
+      <li>Career stage description: maximum 150 words.</li>
+      <li>Deadline: 30th April 2026.</li>
+      <li>Accepted abstracts will be notified by email.</li>
+    </ul>
+  </div>
+
+  <!-- Form card -->
+  <div class="form-card">
+    <div class="form-header">
+      <h2>Abstract Submission</h2>
+      <p>Complete all fields below.</p>
+    </div>
+
+    <div class="form-body">
+      <form id="abstractForm" novalidate>
+
+        <!-- Author info -->
+        <div class="form-section">
+          <div class="section-label">Presenter Information</div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="authorName">Presenting Author Name</label>
+              <input id="authorName" name="entry.680191558" type="text" required autocomplete="name" />
+              <span class="field-error" id="err-authorName">Please enter your name.</span>
+            </div>
+            <div class="field">
+              <label for="email">Email Address</label>
+              <input id="email" name="entry.521700582" type="email" required autocomplete="email" />
+              <span class="field-error" id="err-email">Please enter a valid email.</span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="affiliation">Presenting Author Affiliation</label>
+            <input id="affiliation" name="entry.1474551609" type="text" required autocomplete="organization" />
+            <span class="field-error" id="err-affiliation">Please enter your affiliation.</span>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="region">Region</label>
+              <select id="region" name="entry.48303202" required>
+                <option value="" disabled selected>Select region</option>
+                <option value="Europe">Europe</option>
+                <option value="Outside Europe">Outside Europe</option>
+              </select>
+              <span class="field-error" id="err-region">Please select your region.</span>
+            </div>
+            <div class="field">
+              <label for="submittedMain">Submitted abstract to main ESDR meeting?</label>
+              <select id="submittedMain" name="entry.87086478" required>
+                <option value="" disabled selected>Select</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+              <span class="field-error" id="err-submittedMain">Please select an option.</span>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="label-row">
+              <label for="ecrText">Career Stage Description</label>
+              <span class="word-count" id="ecrWordCount">0 / 150 words</span>
+            </div>
+            <textarea
+              id="ecrText"
+              name="entry.419200559"
+              required
+              rows="4"
+              placeholder="Include when you completed / will complete your PhD and a short overview of your career trajectory."
+            ></textarea>
+            <span class="field-error" id="err-ecrText" data-default="Please describe your career stage.">Please describe your career stage.</span>
+          </div>
+        </div>
+
+        <!-- Abstract -->
+        <div class="form-section">
+          <div class="section-label">Abstract Details</div>
+
+          <div class="field">
+            <label for="authorList">Full Author List</label>
+            <textarea id="authorList" name="entry.831993546" required rows="2"></textarea>
+            <span class="field-error" id="err-authorList">Please provide the full author list.</span>
+          </div>
+
+          <div class="field">
+            <label for="abstractTitle">Abstract Title</label>
+            <input id="abstractTitle" name="entry.789224007" type="text" required />
+            <span class="field-error" id="err-abstractTitle">Please enter the abstract title.</span>
+          </div>
+
+          <div class="field">
+            <div class="label-row">
+              <label for="abstractText">Abstract</label>
+              <span class="char-count" id="charCount">0 / 2,300 characters</span>
+            </div>
+            <!-- No maxlength — counter goes red and submission is blocked instead -->
+            <textarea id="abstractText" name="entry.1358164172" required rows="8"></textarea>
+            <span class="field-error" id="err-abstractText" data-default="Please enter your abstract.">Please enter your abstract.</span>
+          </div>
+
+          <div class="field">
+            <label for="keywords">Keywords</label>
+            <input
+              id="keywords"
+              type="text"
+              required
+              name="entry.384418168"
+            />
+            <span class="hint" id="keywordsHint">Enter up to 5 keywords separated by commas.</span>
+            <span class="field-error" id="err-keywords">Please enter at least one keyword (max 5).</span>
+          </div>
+        </div>
+        <button class="submit-btn" id="submitBtn" type="submit">
+          <div class="spinner" id="spinner"></div>
+          <span id="btnText">Submit Abstract</span>
+        </button>
+
+      </form>
+
+      <!-- Success state -->
+      <div class="success-panel" id="success">
+        <div class="success-icon">✓</div>
+        <h3>Abstract Received</h3>
+        <p>A copy of your submission will be emailed to you. If you do not receive this within 1 hour (check spam), please email info@skingeneticsconsortium.org<br> <br> We will be in touch regarding the outcome.</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ── Footer ────────────────────────────────── -->
+<footer>
+  <p>ESDR Satellite Event</p>
+  <p>Supported by the LEO Foundation and ESDR</p>
+  <div>
+    <img src="logos/LEO_LOGO.png" alt="LEO Foundation Logo" />
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ── Burger menu ─────────────────────────────────────────────
+  const burgerBtn  = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const burgerIcon = document.getElementById('burgerIcon');
+  const closeIcon  = document.getElementById('closeIcon');
+
+  burgerBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    burgerIcon.style.display = isOpen ? 'none' : 'block';
+    closeIcon.style.display  = isOpen ? 'block' : 'none';
+    burgerBtn.setAttribute('aria-expanded', isOpen);
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      burgerIcon.style.display = 'block';
+      closeIcon.style.display  = 'none';
+      burgerBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // ── Word count helper (for ECR field) ───────────────────────
+  function countWords(text) {
+    return text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+  }
+
+  function bindWordCount(textareaId, counterId, limit) {
+    const el      = document.getElementById(textareaId);
+    const counter = document.getElementById(counterId);
+    function update() {
+      const n = countWords(el.value);
+      counter.textContent = `${n} / ${limit} word${limit !== 1 ? 's' : ''}`;
+      counter.classList.toggle('over', n > limit);
+    }
+    el.addEventListener('input', update);
+  }
+
+  // ── Character count for abstract ────────────────────────────
+  const abstractTextarea = document.getElementById('abstractText');
+  const charCountEl      = document.getElementById('charCount');
+
+  function updateCharCount() {
+    const n = abstractTextarea.value.length;
+    charCountEl.textContent = `${n.toLocaleString()} / 2,300 characters`;
+    charCountEl.classList.toggle('over', n > 2300);
+    // Mirror invalid styling on the textarea itself so it turns red live
+    abstractTextarea.classList.toggle('invalid', n > 2300);
+  }
+  abstractTextarea.addEventListener('input', updateCharCount);
+
+  bindWordCount('ecrText', 'ecrWordCount', 150);
+
+  // ── Keywords validation ──────────────────────────────────────
+  const keywordsInput = document.getElementById('keywords');
+  const keywordsHint  = document.getElementById('keywordsHint');
+
+  function validateKeywords() {
+    const kws = keywordsInput.value.split(',').map(k => k.trim()).filter(Boolean);
+    const empty = kws.length === 0;
+    const over = kws.length > 5;
+    const invalid = empty || over;
+
+    const errEl = document.getElementById('err-keywords');
+    if (invalid) {
+      keywordsHint.style.display = 'none';
+      errEl.textContent = over
+        ? `Too many keywords — please enter no more than 5 (you have ${kws.length}).`
+        : 'Please enter at least one keyword.';
+      errEl.classList.add('show');
+    } else {
+      keywordsHint.style.display = '';
+      keywordsHint.classList.remove('error');
+      errEl.classList.remove('show');
+    }
+    keywordsInput.classList.toggle('invalid', invalid);
+
+    return !invalid;
+  }
+  keywordsInput.addEventListener('input', validateKeywords);
+  keywordsInput.addEventListener('blur', validateKeywords);
+
+  // ── Inline validation ────────────────────────────────────────
+  function showError(id, show) {
+    document.getElementById('err-' + id).classList.toggle('show', show);
+    const input = document.getElementById(id);
+    if (input) input.classList.toggle('invalid', show);
+  }
+
+  function validateField(id) {
+    const el = document.getElementById(id);
+    const empty = !el || el.value.trim() === '';
+    const isEmail = el && el.type === 'email';
+    const badEmail = isEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value);
+    const errEl = document.getElementById('err-' + id);
+    if (errEl) errEl.textContent = errEl.dataset.default || errEl.textContent;
+    showError(id, empty || badEmail);
+    return !empty && !badEmail;
+  }
+
+  ['authorName','email','affiliation','region','submittedMain','ecrText','authorList','abstractTitle','abstractText'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('blur', () => validateField(id));
+  });
+
+  // ── Form submit ──────────────────────────────────────────────
+  const form      = document.getElementById('abstractForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const btnText   = document.getElementById('btnText');
+  const spinner   = document.getElementById('spinner');
+  const success   = document.getElementById('success');
+
+  // Reset button if connection is restored after an offline attempt
+  window.addEventListener('online', () => {
+    btnText.textContent = 'Submit Abstract';
+    submitBtn.style.background = '';
+  });
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Check network connectivity before doing anything else
+    if (!navigator.onLine) {
+      btnText.textContent = 'No internet connection — please check and try again.';
+      submitBtn.style.background = 'var(--red)';
+      return;
+    }
+
+    const fields = ['authorName','email','affiliation','region','submittedMain','ecrText','authorList','abstractTitle','abstractText'];
+    const fieldsValid = fields.map(validateField).every(Boolean);
+    const keywordsValid = validateKeywords();
+
+    // Check abstract character limit
+    const abstractLen = abstractTextarea.value.length;
+    const abstractOverLimit = abstractLen > 2300;
+    if (abstractOverLimit) {
+      const errEl = document.getElementById('err-abstractText');
+      errEl.textContent = `Abstract exceeds 2,300 characters (currently ${abstractLen.toLocaleString()}).`;
+      errEl.classList.add('show');
+      abstractTextarea.classList.add('invalid');
+    }
+
+    const allValid = fieldsValid && keywordsValid && !abstractOverLimit;
+
+    if (!allValid) {
+      form.querySelector('.invalid')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    // Check word limit for ECR field
+    const ecrWords = countWords(document.getElementById('ecrText').value);
+    if (ecrWords > 150) {
+      showError('ecrText', true);
+      document.getElementById('err-ecrText').textContent = 'Career stage description exceeds 150 words.';
+      return;
+    }
+
+    // Submit
+    submitBtn.disabled = true;
+    btnText.textContent = 'Submitting…';
+    spinner.classList.add('show');
+
+    const fetchPromise = fetch(
+      'https://docs.google.com/forms/d/e/1FAIpQLSc6D_FhBu0dQ8-jcfjurXWLbprM3DMOUVDuXvW077Fx1y8elg/formResponse',
+      { method: 'POST', body: new FormData(form), mode: 'no-cors' }
+    );
+
+Promise.all([fetchPromise, new Promise(r => setTimeout(r, 1000))])
+  .then(() => {
+    form.style.display = 'none';
+    success.classList.add('show');
+  })
+  .catch(() => {
+    btnText.textContent = 'Submission failed — please try again.';
+    submitBtn.style.background = 'var(--red)';
+    submitBtn.disabled = false;
+    spinner.classList.remove('show');
+  });
+  });
+</script>
+</body>
+</html>
