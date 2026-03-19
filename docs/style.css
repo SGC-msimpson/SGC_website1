@@ -1,4 +1,4 @@
-/* ── base ── */
+/* ── Reset & base ── */
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Serif+4:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap');
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -184,7 +184,6 @@ header {
   flex: 0 0 auto;
   width: auto;
 }
-
 /* ── Mobile ── */
 @media (max-width: 680px) {
   .header-top {
@@ -225,14 +224,34 @@ header {
   }
 }
 
-/* ── Extra-small (≤380px) ── */
+/* ─ Extra-small (≤380px) ─ */
 @media (max-width: 380px) {
   .sub-pages a {
     font-size: 0.72rem;
     padding: 0.55rem 0.25rem;
   }
 }
+/* --Figure_index-- */
+.publications-figure {
+  margin: 24px 0 16px;
+  text-align: center;
+}
 
+.publications-figure img {
+  max-width: 750px;      /* size-limited */
+  width: 100%;
+  height: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.publications-figure figcaption {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #666;
+  font-style: italic;
+}
 /* ── Content helpers from our-research page ─ */
 .phenotype-section { margin-top: 2rem; }
 .phenotype-section h3 { margin-bottom: 0.5rem; }

@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
-    /* Responsive: stack two-column layouts on narrow screens */
+    /* two-column layouts on narrow screens */
     @media (max-width: 768px) {
       .page-layout {
         flex-direction: column !important;
@@ -18,7 +18,7 @@
       }
     }
 
-    /* Leo Foundation funding card */
+    /* Funding / collaboration cards */
     .funding-card {
       background-color: #f5f8fc;
       border: 1px solid #dce6f0;
@@ -28,8 +28,10 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 0.35rem;
+      gap: 0.2rem;
       text-align: center;
+      width: 275px; 
+      box-sizing: border-box;
     }
     .funding-card .funding-label {
       font-size: 0.78rem;
@@ -39,7 +41,8 @@
       color: #6b7a90;
       margin: 0;
     }
-    .funding-card .leo-logo {
+    .funding-card .leo-logo,
+    .funding-card .broad-logo {
       max-width: 180px;
       width: 100%;
       height: auto;
@@ -60,7 +63,7 @@
       <!-- Top Row: Logo and Main Title -->
       <div class="header-top">
         <img src="images/logo.png" alt="Skin Genetics Logo" class="logo">
-        <h1>Skin Genetics Consortium</h1>
+        <h1><span class="header-skin">Skin</span> <span class="header-genetics">Genetics Consortium</span></h1>
       </div>
       <!-- Second Row: Sub-Page Navigation -->
       <div class="sub-pages">
@@ -88,11 +91,15 @@
       </p>
     </div>
 
-    <!-- Right Column: Funding card -->
-    <div class="sidebar logo-expanded" style="display: flex; align-items: center; justify-content: center;">
+    <!-- Right Column: Funding cards stacked vertically -->
+    <div class="sidebar logo-expanded" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;">
       <div class="funding-card">
         <p class="funding-label">Funded by</p>
         <img src="images/leo_logo.png" alt="Leo Foundation logo" class="leo-logo">
+      </div>
+      <div class="funding-card">
+        <p class="funding-label">In collaboration with</p>
+        <img src="images/BROAD.png" alt="Broad Institute logo" class="broad-logo">
       </div>
     </div>
   </div>
