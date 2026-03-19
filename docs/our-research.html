@@ -6,6 +6,45 @@
   <title>Our Research - Skin Genetics Consortium</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <style>
+    /* Responsive: stack two-column layouts on narrow screens */
+    @media (max-width: 768px) {
+      .page-layout {
+        flex-direction: column !important;
+      }
+      .sidebar.logo-expanded {
+        width: 100% !important;
+        margin-top: 1.5rem;
+      }
+    }
+
+    /* Leo Foundation funding card */
+    .funding-card {
+      background-color: #f5f8fc;
+      border: 1px solid #dce6f0;
+      border-radius: 10px;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      text-align: center;
+    }
+    .funding-card .funding-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6b7a90;
+      margin: 0;
+    }
+    .funding-card .leo-logo {
+      max-width: 180px;
+      width: 100%;
+      height: auto;
+    }
+  </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9WG3L6SV4R"></script>
   <script>
@@ -14,57 +53,6 @@
     gtag('js', new Date());
     gtag('config', 'G-9WG3L6SV4R');
   </script>
-  <style>
-    .phenotype-section {
-      margin-top: 2rem;
-    }
-    .phenotype-section h3 {
-      margin-bottom: 0.5rem;
-    }
-    .phenotype-meta {
-      font-size: 0.85rem;
-      color: #666;
-      margin-bottom: 1rem;
-    }
-    .phenotype-table-wrap {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    .phenotype-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.9rem;
-    }
-    .phenotype-table td {
-      padding: 7px 12px;
-      border-bottom: 1px solid #eee;
-      vertical-align: middle;
-    }
-    .phenotype-table tr:last-child td {
-      border-bottom: none;
-    }
-    .phenotype-table tr:nth-child(even) td {
-      background-color: #f9f9f9;
-    }
-    .phenotype-table tr:hover td {
-      background-color: #f0f4f8;
-    }
-    .phenotype-table .col-num {
-      width: 42px;
-      text-align: right;
-      padding-right: 14px;
-      color: #aaa;
-      font-size: 0.8rem;
-    }
-    .content-single {
-      max-width: 1000px;
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: 20px;
-      padding-right: 20px;
-    }
-  </style>
 </head>
 <body>
   <header>
@@ -96,31 +84,35 @@
         This initial project is funded by the Leo Foundation. We are working closely with population-scale biobanks across the world to perform genetic analysis on skin conditions that are routinely collected in electronic health records.
       </p>
       <p>
-        The results from this study will be made available through the Skin Knowledge portal and will form the basis of future studies investigating the shared and distinct components of genetic risk between diseases and use this information to understand the biological mechanisms of disease and how this information can be used to identify optimal therapeutic intervention strategies to improve health outcomes.
+        The results from this study will be made available through the <a href="https://skin.hugeamp.org/" target="_blank" rel="noopener noreferrer">Skin Knowledge Portal</a> and will form the basis of future studies investigating the shared and distinct components of genetic risk between diseases and use this information to understand the biological mechanisms of disease and how this information can be used to identify optimal therapeutic intervention strategies to improve health outcomes.
       </p>
     </div>
 
-    <!-- Right Column: Logo centred -->
-    <div class="sidebar" style="display: flex; align-items: center; justify-content: center;">
-      <img src="images/leo_logo.png" alt="Large Consortium Logo">
+    <!-- Right Column: Funding card -->
+    <div class="sidebar logo-expanded" style="display: flex; align-items: center; justify-content: center;">
+      <div class="funding-card">
+        <p class="funding-label">Funded by</p>
+        <img src="images/leo_logo.png" alt="Leo Foundation logo" class="leo-logo">
+      </div>
     </div>
   </div>
 
   <!-- Bottom Section: Full Width (phenotypes) -->
   <div class="page-layout">
-  <div class="content" style="flex: 2">
+    <div class="content" style="flex: 2">
       <h3>Initial Phase Phenotypes</h3>
       <p>
         Our Clinical Working Group have identified the following skin phenotypes and phenotype groups for initial investigation in each of our contributing Biobanks and Research Cohorts.
         The figure below provides an overview of the current sample sizes across phenotypes, with each compared to the largest previously reported GWAS (black dot).
       </p>
-      <img src="images/plot.png" alt="Initial Phase Plot" style="width: 600px;">
+      <img id="plot-preview" src="images/plot.png" alt="Initial Phase Plot" class="plot-image">
 
       <!-- Phenotype list -->
       <div class="phenotype-section">
         <h3>Phenotypes</h3>
+        <input id="phenotype-search" type="text" placeholder="Search phenotype list..." style="width:100%; max-width:360px; padding:0.5rem; margin-bottom:1rem; border:1px solid #ccc; border-radius:4px;">
         <div class="phenotype-table-wrap">
-          <table class="phenotype-table">
+          <table id="phenotype-table" class="phenotype-table">
             <tbody>
               <tr><td class="col-num">1</td><td>Acanthosis nigricans</td></tr>
               <tr><td class="col-num">2</td><td>Acne keloid</td></tr>
@@ -233,10 +225,46 @@
         </div>
       </div>
 
+      <script>
+        document.getElementById('phenotype-search').addEventListener('input', function (e) {
+          var query = e.target.value.toLowerCase();
+          var rows = document.querySelectorAll('#phenotype-table tbody tr');
+          rows.forEach(function (row) {
+            var text = row.textContent.toLowerCase();
+            row.style.display = text.indexOf(query) > -1 ? '' : 'none';
+          });
+        });
+
+        var plotPreview = document.getElementById('plot-preview');
+        var plotModal = document.createElement('div');
+        plotModal.className = 'plot-modal';
+        plotModal.innerHTML = '<span class="close-btn" aria-label="Close">&times;</span><img src="images/plot.png" alt="Enlarged Initial Phase Plot">';
+        document.body.appendChild(plotModal);
+
+        var closeBtn = plotModal.querySelector('.close-btn');
+        function closeModal() {
+          plotModal.classList.remove('open');
+        }
+
+        plotPreview.addEventListener('click', function () {
+          plotModal.classList.add('open');
+        });
+        plotModal.addEventListener('click', function (event) {
+          if (event.target === plotModal || event.target === closeBtn) {
+            closeModal();
+          }
+        });
+        document.addEventListener('keydown', function (event) {
+          if (event.key === 'Escape' && plotModal.classList.contains('open')) {
+            closeModal();
+          }
+        });
+      </script>
+
       <!-- Cohorts section -->
       <div class="phenotype-section">
         <h3>Cohorts</h3>
-        <p class="phenotype-meta"> Contributing biobanks and research cohorts</p>
+        <p class="phenotype-meta">Contributing biobanks and research cohorts</p>
         <div class="phenotype-table-wrap">
           <table class="phenotype-table">
             <tbody>
@@ -249,26 +277,28 @@
               <tr><td class="col-num">7</td><td>The Trøndelag Health Study (HUNT)</td></tr>
               <tr><td class="col-num">8</td><td>Biobank Japan</td></tr>
               <tr><td class="col-num">9</td><td>Kaiser Permanente</td></tr>
-              <tr><td class="col-num">11</td><td>Michigan Genomics Initiative</td></tr>
-              <tr><td class="col-num">12</td><td>Million Veteran Program</td></tr>
-              <tr><td class="col-num">13</td><td>Norwegian Mother, Father and Child Cohort Study (MoBa)</td></tr>
-              <tr><td class="col-num">14</td><td>Pakistan Genome Resource</td></tr>
-              <tr><td class="col-num">15</td><td>Penn Medicine Biobank</td></tr>
-              <tr><td class="col-num">16</td><td>Qatar Biobank</td></tr>
-              <tr><td class="col-num">17</td><td>Rotterdam study</td></tr>
-              <tr><td class="col-num">18</td><td>Tohoku Medical Megabank</td></tr>
-              <tr><td class="col-num">19</td><td>Taiwan Precision Medicine Initiative (TPMI)</td></tr>
-              <tr><td class="col-num">20</td><td>Genomics England</td></tr>
-              <tr><td class="col-num">21</td><td>All of Us</td></tr>
-              <tr><td class="col-num">22</td><td>UK Biobank</td></tr>
-              <tr><td class="col-num">23</td><td>Our Future Health</td></tr>
-              <tr><td class="col-num">24</td><td>Genes &amp; Health</td></tr>
+              <tr><td class="col-num">10</td><td>Michigan Genomics Initiative</td></tr>
+              <tr><td class="col-num">11</td><td>Million Veteran Program</td></tr>
+              <tr><td class="col-num">12</td><td>Norwegian Mother, Father and Child Cohort Study (MoBa)</td></tr>
+              <tr><td class="col-num">13</td><td>Pakistan Genome Resource</td></tr>
+              <tr><td class="col-num">14</td><td>Penn Medicine Biobank</td></tr>
+              <tr><td class="col-num">15</td><td>Qatar Biobank</td></tr>
+              <tr><td class="col-num">16</td><td>Rotterdam study</td></tr>
+              <tr><td class="col-num">17</td><td>Tohoku Medical Megabank</td></tr>
+              <tr><td class="col-num">18</td><td>Taiwan Precision Medicine Initiative (TPMI)</td></tr>
+              <tr><td class="col-num">19</td><td>Genomics England</td></tr>
+              <tr><td class="col-num">20</td><td>All of Us</td></tr>
+              <tr><td class="col-num">21</td><td>UK Biobank</td></tr>
+              <tr><td class="col-num">22</td><td>Our Future Health</td></tr>
+              <tr><td class="col-num">23</td><td>Genes &amp; Health</td></tr>
             </tbody>
           </table>
         </div>
       </div>
-  </div>
-  <div style="flex: 1"></div>
-  </div>
+
+    </div><!-- end .content -->
+    <div style="flex: 1"></div>
+  </div><!-- end .page-layout -->
+
 </body>
 </html>

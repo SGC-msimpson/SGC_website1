@@ -1,117 +1,250 @@
-/* Basic Reset */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* ── Reset & base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* Body and Global Typography */
 body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  background-color: #fafafa;
-  color: #333;
-  padding-top: 150px; /* Ensures content isn't hidden behind the fixed header */
+  font-family: Georgia, 'Times New Roman', serif;
+  background: #ffffff;
+  color: #1a1a1a;
+  line-height: 1.7;
 }
 
-/* Fixed Header (unchanged from earlier) */
+/* ── Header ── */
 header {
-  background-color: #fff;
-  color: #333;
-  padding: 30px 20px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  border-bottom: 1px solid #ccc;
+  background: #ffffff;
+  color: rgb(42, 160, 200);
+  padding: 0 1.25rem;
 }
+
 .header-content {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
 }
+
 .header-top {
   display: flex;
   align-items: center;
-}
-.logo {
-  width: 60px;
-  height: auto;
-  margin-right: 15px;
-}
-.header-top h1 {
-  font-size: 2.5rem;
-  margin: 0;
-}
-.sub-pages {
-  font-size: 0.9rem;
-  color: #777;
-  margin-top: 5px;
-}
-.sub-pages a {
-  text-decoration: none;
-  color: #777;
-  margin-right: 10px;
-}
-.sub-pages a:hover {
-  text-decoration: underline;
+  gap: 1rem;
+  padding: 1.25rem 0 1rem;
 }
 
-/* Global Two-Column Layout for All Pages */
+.logo {
+  height: 70px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.header-top h1 {
+  font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: clamp(1.65rem, 3.5vw, 1.95rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+/* ── Nav ── */
+.sub-pages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.sub-pages a {
+  color: #000000;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.65rem 1rem;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.sub-pages a:hover,
+.sub-pages a:focus {
+  background: rgba(255, 255, 255, 0.12);
+  color: #0bc3d7;
+}
+
+.sub-pages a:first-child { padding-left: 0; }
+
+/* ── Page layout ── */
 .page-layout {
   display: flex;
-  gap: 20px;  /* Space between the content and sidebar */
-  max-width: 1000px;
-  margin: 20px auto;
+  gap: 2.5rem;
+  max-width: 1100px;
+  margin: 2.5rem auto;
+  padding: 0 1.25rem;
+  align-items: flex-start;
 }
 
-/* Left Column: Content takes 2/3 of the width */
+/* ── Main content ── */
 .content {
-  flex: 2;
+  flex: 1 1 0;
+  min-width: 0;
 }
 
-/* Right Column: Sidebar (Logo) takes 1/3 of the width */
+.content h2 {
+  font-family: Georgia, serif;
+  font-size: clamp(1.25rem, 3vw, 1.65rem);
+  font-weight: normal;
+  color: #000000;
+  margin-bottom: 1.1rem;
+  line-height: 1.3;
+}
+
+.content p {
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.content p:last-child { margin-bottom: 0; }
+
+/* ── Sidebar logo ── */
 .sidebar {
-  flex: 1;
+  flex: 0 0 200px;
   display: flex;
+  align-items: flex-start;
   justify-content: center;
-  align-items: center;
 }
 
-/* Ensure the large logo scales responsively */
 .sidebar img {
-  max-width: 100%;
+  width: 100%;
+  max-width: 180px;
   height: auto;
+  opacity: 0.88;
 }
 
-/* Responsive adjustments: Stack columns on smaller screens */
-@media screen and (max-width: 768px) {
+.sidebar img.leo-logo {
+  width: auto;
+  max-width: 250px;
+  height: auto;
+  opacity: 0.88;
+  margin-top: 2rem;
+}
+
+.plot-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: block;
+  margin: 0 auto 1rem;
+  cursor: zoom-in;
+}
+
+.plot-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.plot-modal.open { display: flex; }
+
+.plot-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  cursor: zoom-out;
+}
+
+.plot-modal .close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.sidebar img.network-logo {
+  width: auto;
+  max-width: 400px;
+  height: auto;
+  opacity: 0.88;
+}
+
+.sidebar.logo-expanded {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+/* ── Mobile ── */
+@media (max-width: 680px) {
+  .header-top {
+    padding: 1rem 0 0.85rem;
+    gap: 0.75rem;
+  }
+
+  .logo { height: 40px; }
+
+  .sub-pages {
+    margin: 0 -1.25rem;
+    padding: 0 0.25rem;
+  }
+
+  .sub-pages a {
+    flex: 1 1 auto;
+    text-align: center;
+    padding: 0.6rem 0.4rem;
+    font-size: 0.78rem;
+  }
+
+  .sub-pages a:first-child { padding-left: 0.4rem; }
+
   .page-layout {
-    flex-direction: column;
+    flex-direction: column-reverse;
+    gap: 1.5rem;
+    margin: 1.75rem auto;
   }
+
   .sidebar {
-    margin-top: 20px;
+    flex: none;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .sidebar img {
+    max-width: 120px;
   }
 }
 
-/* Remove bullet points for all ul elements */
-ul {
-  list-style: none;
-  padding-left: 0;
-  margin-bottom: 20px;
+/* ── Extra-small (≤380px) ── */
+@media (max-width: 380px) {
+  .sub-pages a {
+    font-size: 0.72rem;
+    padding: 0.55rem 0.25rem;
+  }
 }
 
-/* Increase spacing for the Co-ordinating Team list */
-.team-list {
-  margin-bottom: 40px;  /* Adjust this value to increase space */
-}
+/* ── Content helpers from our-research page ─ */
+.phenotype-section { margin-top: 2rem; }
+.phenotype-section h3 { margin-bottom: 0.5rem; }
+.phenotype-meta { font-size: 0.85rem; color: #666; margin-bottom: 1rem; }
+.phenotype-table-wrap { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+.phenotype-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.phenotype-table td { padding: 7px 12px; border-bottom: 1px solid #eee; vertical-align: middle; }
+.phenotype-table tr:last-child td { border-bottom: none; }
+.phenotype-table tr:nth-child(even) td { background-color: #f9f9f9; }
+.phenotype-table tr:hover td { background-color: #f0f4f8; }
+.phenotype-table .col-num { width: 42px; text-align: right; padding-right: 14px; color: #aaa; font-size: 0.8rem; }
+.content-single { max-width: 1000px; margin-left: auto; margin-right: auto; padding-left: 20px; padding-right: 20px; }
 
-/* Increase spacing for the Consortium Members heading */
-.members-heading {
-  margin-top: 50px;  /* Adjust this value to increase space above the heading */
-}
+ul { list-style: none; padding-left: 0; margin-bottom: 20px; }
+.team-list { margin-bottom: 40px; }
+.members-heading { margin-top: 50px; }
+p { margin-bottom: 2.5em; }
 
-/* Paragraph spacing */
-p {
-  margin-bottom: 2.5em;  /* Adjust as desired */
-}
 
