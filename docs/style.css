@@ -74,7 +74,7 @@ header {
   color: #ffffff;
 }
 
-.sub-pages a:first-child { padding-left: 0; }
+.sub-pages a:first-child { padding-left: 1; }
 
 /* ── Page layout ── */
 .page-layout {
