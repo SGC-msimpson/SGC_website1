@@ -150,12 +150,15 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 64px;
-      align-items: center;
+      align-items: end;
       position: relative;
     }
     @media (max-width: 768px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; align-items: start; }
       .hero-image { order: -1; }
+    }
+    .hero-image {
+      padding-top: 48px;
     }
     .hero-image img {
       width: 100%;
@@ -661,7 +664,7 @@
       <a href="#confirmed-speakers">Speakers</a>
       <a href="#speakers">Featured</a>
       <a href="#schedule">Schedule</a>
-      <a href="submit-abstract.html" class="nav-cta">Apply for a travel award</a>
+      <a href="submit-abstract.html" class="nav-cta">Abstract/Travel award</a>
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
@@ -669,7 +672,7 @@
     <a href="#confirmed-speakers">Speakers</a>
     <a href="#speakers">Groups</a>
     <a href="#schedule">Schedule</a>
-    <a href="submit-abstract.html" class="nav-cta">Apply for a travel award</a>
+    <a href="submit-abstract.html" class="nav-cta">Abstract/Travel award</a>
   </div>
 </nav>
 
@@ -684,7 +687,7 @@
       <h1>Large-Scale Genetics to Cellular Mechanisms of Skin Disease</h1>
       <p>A one-day scientific meeting on <strong>Wednesday 9th September 2026</strong>.</p>
       <div class="hero-btns">
-        <a href="submit-abstract.html" class="btn-primary">Submit Abstract & <br> Apply for travel award</a>
+        <a href="submit-abstract.html" class="btn-primary">Submit Abstract & <br> Apply for a travel award</a>
         <a href="#registration" class="btn-ghost">Register your interest</a>
       </div>
     </div>
