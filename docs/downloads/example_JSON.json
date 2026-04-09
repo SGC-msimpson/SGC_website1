@@ -1,0 +1,13 @@
+{
+  "cohort_name": "Cypress GWAS 1772069282459",
+  "phenotype": "CORNS",
+  "ancestry": "EUR",
+  "sex": "All",
+  "codes_used": "L20, L21",
+  "cases": 5000,
+  "controls": 100000,
+  "male_proportion_cases": 0.40,
+  "male_proportion_controls": 0.47,
+  "assoc_test_software_and_version": "regenie v4.1",
+  "assoc_test_model_and_settings": "logistic regression with age, sex, 10 PCs as covariates"
+}
