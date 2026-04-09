@@ -37,7 +37,7 @@ Metadata JSON file:
     }
 
 Usage example:
-  ./upload_gwas_presigned_prod.py \
+  ./upload_gwas.py \
     --dataset my_dataset \
     --metadata metadata.json \
     file.tsv.gz
