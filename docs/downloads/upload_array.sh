@@ -22,7 +22,7 @@ echo "Processing task ${SLURM_ARRAY_TASK_ID}: $FILE_PATH"
 # This is slightly SHORTER than your #SBATCH --time
 # Replace "GEL_batch" with a descriptor for your data
 # Here, I've named my metadata JSONs the same as my GWAS files, adding ".json" to the end
-timeout 14m python upload_gwas_presigned_prod.py --dataset GEL_batch --metadata "${FILE_PATH}.json" "$FILE_PATH"
+timeout 14m python upload_gwas --dataset GEL_data --metadata "${FILE_PATH}.json" "$FILE_PATH"
 
 # 4. Capture the exit code
 EXIT_STATUS=$?
