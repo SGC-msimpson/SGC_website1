@@ -1,6 +1,6 @@
 {
-  "cohort_name": "Cypress GWAS 1772069282459",
-  "phenotype": "CORNS",
+  "cohort_name": "UK Biobank",
+  "phenotype": "ATOPIC_DERM",
   "ancestry": "EUR",
   "sex": "All",
   "codes_used": "L20, L21",
