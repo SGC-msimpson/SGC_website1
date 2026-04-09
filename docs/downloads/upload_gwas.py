@@ -487,24 +487,43 @@ def main():
     print(f"[Step 2/3] Uploading file to S3 ({file_size / (1024*1024):.2f} MB)...")
     # Note: Don't set Content-Type header - it must match what was specified when
     # generating the presigned URL (which didn't specify one)
+    #
+    # S3 uploads occasionally stall mid-transfer (~10% of the time from high-latency
+    # connections). The presigned URL stays valid for the retry window, and a failed
+    # PUT leaves no partial object in S3, so retrying the same URL is safe.
+    UPLOAD_TIMEOUT = 120   # seconds; normal upload completes in <30s
+    MAX_UPLOAD_ATTEMPTS = 3
 
-    try:
-        with open(args.file, "rb") as fh:
-            progress_reader = ProgressFileReader(fh, file_size, f"Uploading {filename}")
-            s3_resp = requests.put(
-                presigned_url,
-                data=progress_reader,
-                headers={"Content-Length": str(file_size)},
-                timeout=600,
-            )
-            s3_resp.raise_for_status()
-            progress_reader.close()
-        print(f"  File uploaded to S3 (HTTP {s3_resp.status_code})")
-    except requests.RequestException as e:
-        sys.stderr.write(f"\nS3 upload failed: {e}\n")
-        if hasattr(e, "response") and e.response is not None:
-            sys.stderr.write(f"Response: {e.response.text}\n")
-        sys.exit(1)
+    for attempt in range(1, MAX_UPLOAD_ATTEMPTS + 1):
+        if attempt > 1:
+            sys.stderr.write(f"  Retrying upload (attempt {attempt}/{MAX_UPLOAD_ATTEMPTS})...\n")
+            time.sleep(5)
+        try:
+            with open(args.file, "rb") as fh:
+                progress_reader = ProgressFileReader(fh, file_size, f"Uploading {filename}")
+                try:
+                    s3_resp = requests.put(
+                        presigned_url,
+                        data=progress_reader,
+                        headers={"Content-Length": str(file_size)},
+                        timeout=UPLOAD_TIMEOUT,
+                    )
+                    s3_resp.raise_for_status()
+                finally:
+                    progress_reader.close()
+            print(f"  File uploaded to S3 (HTTP {s3_resp.status_code})")
+            break  # success
+        except requests.RequestException as e:
+            if hasattr(e, "response") and e.response is not None and 400 <= e.response.status_code < 500:
+                sys.stderr.write(f"\nS3 upload rejected (HTTP {e.response.status_code}): {e.response.text}\n")
+                sys.exit(1)
+            if attempt < MAX_UPLOAD_ATTEMPTS:
+                sys.stderr.write(f"\n  Upload attempt {attempt} failed: {e}\n")
+            else:
+                sys.stderr.write(f"\nS3 upload failed after {MAX_UPLOAD_ATTEMPTS} attempts: {e}\n")
+                if hasattr(e, "response") and e.response is not None:
+                    sys.stderr.write(f"Response: {e.response.text}\n")
+                sys.exit(1)
 
     # STEP 3: Confirm upload with API
     print("[Step 3/3] Confirming upload with API...")
