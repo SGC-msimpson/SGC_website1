@@ -1,13 +1,13 @@
 {
-  "cohort_name": "UK Biobank",
-  "phenotype": "ATOPIC_DERM",
-  "ancestry": "EUR",
+  "cohort_name": "EXAMPLE",
+  "phenotype": "ZOSTER",
+  "ancestry": "Combined",
   "sex": "All",
-  "codes_used": "L20, L21",
+  "codes_used": "B020, B022, B023, B028, B029",
   "cases": 5000,
   "controls": 100000,
-  "male_proportion_cases": 0.40,
-  "male_proportion_controls": 0.47,
-  "assoc_test_software_and_version": "regenie v4.1",
-  "assoc_test_model_and_settings": "logistic regression with age, sex, 10 PCs as covariates"
+  "male_proportion_cases": 0.35,
+  "male_proportion_controls": 0.44,
+  "assoc_test_software_and_version": "regenie v3.4.1",
+  "assoc_test_model_and_settings": "logistic regression with sex, 20 PCs as covariates"
 }
