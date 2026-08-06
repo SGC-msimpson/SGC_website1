@@ -503,6 +503,51 @@
     .schedule-item.highlight .schedule-time { color: var(--indigo); }
     .schedule-item.highlight .schedule-content h3 { color: var(--ink); }
 
+    .schedule-item.lightning-group {
+      flex-wrap: wrap;
+    }
+    .schedule-item.lightning-group .schedule-content {
+      flex: 1;
+      min-width: 0;
+    }
+    .schedule-item.lightning-group .schedule-content h3 {
+      margin-bottom: 12px;
+    }
+    .lightning-rows {
+      width: calc(100% + 144px);
+      margin-left: -144px;
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid var(--border);
+      padding-top: 2px;
+    }
+    .lightning-row {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 10px 0;
+      border-top: 1px solid var(--border);
+    }
+    .lightning-row:first-child { border-top: none; }
+    .lightning-time {
+      min-width: 120px;
+      flex-shrink: 0;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--indigo);
+    }
+    .lightning-text {
+      font-size: 0.88rem;
+      color: #44416a;
+      line-height: 1.5;
+    }
+    .lightning-text strong { color: var(--ink); }
+    @media (max-width: 600px) {
+      .lightning-row { flex-direction: column; align-items: flex-start; gap: 2px; }
+      .lightning-time { align-self: flex-start; text-align: left; }
+      .lightning-rows { width: 100%; margin-left: 0; }
+    }
+
     @media (max-width: 600px) {
       .schedule-item { flex-direction: column; gap: 6px; padding: 18px 20px; }
       .schedule-time { min-width: unset; font-size: 0.85rem; }
@@ -664,7 +709,6 @@
       <a href="#confirmed-speakers">Speakers</a>
       <a href="#speakers">Featured</a>
       <a href="#schedule">Schedule</a>
-      <a href="submit-abstract.html" class="nav-cta">Apply for a travel award</a>
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
@@ -672,7 +716,6 @@
     <a href="#confirmed-speakers">Speakers</a>
     <a href="#speakers">Groups</a>
     <a href="#schedule">Schedule</a>
-    <a href="submit-abstract.html" class="nav-cta">Apply for a travel award</a>
   </div>
 </nav>
 
@@ -687,8 +730,7 @@
       <h1>Large-Scale Genetics to Cellular Mechanisms of Skin Disease</h1>
       <p>A one-day scientific meeting on <strong>Wednesday 9th September 2026</strong>.</p>
       <div class="hero-btns">
-        <a href="submit-abstract.html" class="btn-primary">Submit Abstract & <br> Apply for a travel award</a>
-        <a href="#registration" class="btn-ghost">Register your interest</a>
+        <a href="#registration" class="btn-primary">Register your interest</a>
       </div>
     </div>
   </div>
@@ -867,13 +909,64 @@
           <p>Oliver Stegle</p>
         </div>
       </div>
-            <div class="schedule-item">
+
+      <div class="schedule-item lightning-group">
         <div class="schedule-time">10:40 – 11:50</div>
         <div class="schedule-content">
           <h3>Lightning talks from travel awardees</h3>
-          <p>TBD</p>
+          <div class="lightning-rows">
+            <div class="lightning-row">
+              <span class="lightning-time">10:40 – 10:45</span>
+              <span class="lightning-text"><strong>Andrii Iakovliev</strong>: From blood to skin: long-range genetic regulatory signals point to effector genes for atopic dermatitis</span>
+            </div>
+            <div class="lightning-row">
+              <span class="lightning-time">10:45 – 10:50</span>
+              <span class="lightning-text"><strong>Ravi Ramessur</strong>: Genetic proxies of GLP1R expression are associated with lower risk of psoriasis and psoriatic arthritis</span>
+            </div>
+            <div class="lightning-row">
+              <span class="lightning-time">10:50 – 10:55</span>
+              <span class="lightning-text"><strong>Mary Casagrande</strong>: Genetic evidence implicates metabolic dysfunction as a driver of hidradenitis suppurativa: a bidirectional Mendelian randomization study</span>
+            </div>
+            <div class="lightning-row">
+              <span class="lightning-time">10:55 – 11:00</span>
+              <span class="lightning-text"><strong>Weixin Zhou</strong>: Atopic dermatitis-derived polygenic risk score is a stronger predictor of hand eczema than a hand eczema-derived score and shows additive effects with wet work exposure</span>
+            </div>
+            <div class="lightning-row">
+              <span class="lightning-time">11:00 – 11:05</span>
+              <span class="lightning-text"><strong>Alya Ghina Aqila Arham</strong>: Associations between circulating metabolites and psoriasis risk in the UK Biobank, Estonian Biobank, and HUNT Study</span>
+            </div>
+            <div class="lightning-row">
+              <span class="lightning-time">11:05 – 11:10</span>
+              <span class="lightning-text"><strong>Ali Azimi</strong>: Insights into the Proteomic Landscape and Molecular Pathways Across Human Skin Phototypes</span>
+            </div>
+            <div class="lightning-row">
+              <span class="lightning-time">11:10 – 11:15</span>
+              <span class="lightning-text"><strong>Tolga Düz</strong>: A scalable Human Skin Cell Atlas reveals spatially resolved architecture and rare cell populations of the pilosebaceous unit</span>
+            </div>
+            <div class="lightning-row">
+              <span class="lightning-time">11:15 – 11:20</span>
+              <span class="lightning-text"><strong>Jair Gonzalez Marques Junior</strong>: Longitudinal multi-omic profiling of human epidermal organoids reveals hierarchically timed skin barrier assembly</span>
+            </div>
+            <div class="lightning-row">
+              <span class="lightning-time">11:20 – 11:25</span>
+              <span class="lightning-text"><strong>Shengjie Peng</strong>: MicroRNA-focused CRISPR-Cas9 screen identifies key regulators of keratinocyte aging</span>
+            </div>
+            <div class="lightning-row">
+              <span class="lightning-time">11:25 – 11:30</span>
+              <span class="lightning-text"><strong>Yongjian Chen</strong>: Integrated single-cell multiome and Nano-CUT&amp;Tag profiling reveals epigenetic reprogramming of keratinocytes in post-radiotherapy human skin</span>
+            </div>
+            <div class="lightning-row">
+              <span class="lightning-time">11:30 – 11:35</span>
+              <span class="lightning-text"><strong>Treasa Jiang</strong>: Single cell multi-omic analysis of IL-4 receptor-alpha blockade demonstrates reduction in ex-tissue-resident memory T-cells precedes the resolution of atopic dermatitis</span>
+            </div>
+            <div class="lightning-row">
+              <span class="lightning-time">11:35 – 11:40</span>
+              <span class="lightning-text"><strong>Rundong Jiang</strong>: From Genetic Risk to Tissue Circuitry: IL-23–Driven Remodeling of Stromal–Immune Niches in Psoriasis</span>
+            </div>
+          </div>
         </div>
       </div>
+
       <div class="schedule-item">
         <div class="schedule-time">11:50 – 12:10</div>
         <div class="schedule-content">
