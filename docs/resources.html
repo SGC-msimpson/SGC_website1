@@ -15,6 +15,55 @@
 
   gtag('config', 'G-9WG3L6SV4R');
 </script>
+<style>
+  /* ── Resources page ── (can be moved into style.css) */
+
+  .res-intro { margin-bottom: 1.5rem; }
+
+  .res-section { margin-bottom: 2.75rem; }
+  .res-section h2 {
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #1e71ba;
+    display: inline-block;
+  }
+  .res-group-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #1e71ba;
+    margin: 0.5rem 0 0.4rem;
+  }
+
+  .res-list { margin-bottom: 1.5rem; }
+  .res-list li { padding: 0.2rem 0; }
+
+  /* Secondary analysis panel */
+  .res-panel {
+    background: #f2f7fc;
+    border: 1px solid #d6e5f3;
+    border-left: 5px solid #1e71ba;
+    border-radius: 10px;
+    padding: 1.5rem;
+  }
+  .res-panel p { margin-bottom: 1.25rem; }
+  .res-panel .res-list { margin: 1.25rem 0 0; }
+
+  .res-button {
+    display: inline-block;
+    background: #1e71ba;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    padding: 0.7rem 1.4rem;
+    border-radius: 6px;
+    transition: background 0.15s;
+  }
+  .res-button:hover, .res-button:focus-visible { background: #165a96; }
+</style>
 </head>
 <body>
   <header>
@@ -35,23 +84,37 @@
 
   <div class="page-layout">
     <div class="content">
-      <h2>Consortium Documents</h2>
-      <p>Click the links below to download our latest resources:</p>
 
-      <ul>
-        <li><a href="downloads/phenotype_mapping_v3_feb_26.xlsx" download>Phenotype Mapping Document v3 Feb 2026</a></li>
-        <li><a href="downloads/cohort_analysis_plan_v5_feb_26.pdf" download>Cohort Analysis Plan v5 Feb 2026</a></li>
-        <li><a href="downloads/example_JSON.json" download>Example JSON file</a></li>
-        <li><a href="downloads/Upload_Instructions.pdf" download>GWAS Upload Instructions v1 Apr 2026</a></li>
-        <li><a href="downloads/upload_gwas.py" download>GWAS Upload python script v1 Apr 2026</a></li>
-        <li><a href="downloads/upload_array.sh" download>GWAS upload array script example v1 Apr 2026</a></li>
-      </ul>
+      <section class="res-section">
+        <h2>Consortium Documents</h2>
+        <p class="res-intro">Click the links below to download our latest resources for contributing GWAS:</p>
 
-      <h2>Secondary Analysis Proposals</h2>
-      <ul>
-        <li><a href="https://forms.cloud.microsoft/r/cKgAbQ5dLJ" target="_blank" rel="noopener noreferrer">Submit a secondary analysis proposal</a></li>
-        <li><a href="downloads/SGC_Authorship_Policy_Sep26.pdf" download>Secondary analysis authorship policy</a></li>
-      </ul>
+        <div class="res-group-label">Analysis plan &amp; phenotype definitions</div>
+        <ul class="res-list">
+          <li><a href="downloads/cohort_analysis_plan_v5_feb_26.pdf" download>Cohort Analysis Plan v5 Feb 2026</a></li>
+          <li><a href="downloads/phenotype_mapping_v3_feb_26.xlsx" download>Phenotype Mapping Document v3 Feb 2026</a></li>
+        </ul>
+
+        <div class="res-group-label">Uploading your GWAS</div>
+        <ul class="res-list">
+          <li><a href="downloads/Upload_Instructions.pdf" download>GWAS Upload Instructions v1 Apr 2026</a></li>
+          <li><a href="downloads/upload_gwas.py" download>GWAS Upload Python Script v1 Apr 2026</a></li>
+          <li><a href="downloads/upload_array.sh" download>GWAS Upload Array Script Example v1 Apr 2026</a></li>
+          <li><a href="downloads/example_JSON.json" download>Example JSON File for Upload</a></li>
+        </ul>
+      </section>
+
+      <section class="res-section">
+        <h2>Secondary Analysis Proposals</h2>
+        <div class="res-panel">
+          <p>Want to use consortium data for a secondary analysis? Submit a proposal using the form below, and please read our authorship policy</p>
+          <a class="res-button" href="https://forms.cloud.microsoft/r/cKgAbQ5dLJ" target="_blank" rel="noopener noreferrer">Submit a proposal &#8599;</a>
+          <ul class="res-list">
+            <li><a href="downloads/SGC_Authorship_Policy_Sep26.docx" download>SGC Authorship Policy Sep 2026</a></li>
+          </ul>
+        </div>
+      </section>
+
     </div>
   </div>
 </body>
